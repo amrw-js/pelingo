@@ -1,0 +1,22 @@
+{
+  "useTabs": false,
+  "semi": false,
+  "singleQuote": true,
+  "jsxSingleQuote": true,
+  "printWidth": 120,
+  "importOrder": [
+    "<THIRD_PARTY_MODULES>",
+    "^@/(admin|portal|builder)/(.*)$",
+    "^@/(.*)$",
+    "^../(.*)",
+    "^./(.*)",
+    "^video.js(.*)(.css)$",
+    "^@videojs(.*)(.css)$",
+    "^ace-builds/src-noconflict/(.*)$",
+    "^react-ace",
+    "(.*)(.css)$"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true,
+  "plugins": ["@trivago/prettier-plugin-sort-imports", "prettier-plugin-tailwindcss"]
+}
