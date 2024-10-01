@@ -1,4 +1,4 @@
-import { ArrowRightIcon } from '@heroicons/react/16/solid'
+import { ArrowsRightLeftIcon } from '@heroicons/react/16/solid'
 import cn from 'clsx'
 
 import { useTranslatorContext } from '../../context/TranslatorContext'
@@ -31,7 +31,7 @@ const LanguageInputs = () => {
         displayOption={({ name }) => name}
         displayValue={({ key }) => key}
       />
-      <ArrowRightIcon
+      <ArrowsRightLeftIcon
         onClick={swapLanguages}
         className={cn(
           'size-5 cursor-pointer transition-all',

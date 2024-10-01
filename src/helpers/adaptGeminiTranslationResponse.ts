@@ -11,8 +11,11 @@ export const adaptGeminiTranslationResponse = (response: IGeminiResponse) => {
   const [{ content }] = candidates
   const [{ text = '' }] = content?.parts ?? []
   const jsonMatch = text.match(/"text":\s*"(.*?)"/)
+  const fallbackMatch = text.match(/\s*"([^"]+)"/)
 
   if (jsonMatch && jsonMatch[1]) return jsonMatch[1].replace(/\\n/g, '\n')
+
+  if (fallbackMatch && fallbackMatch[1]) return fallbackMatch[1]
 
   return ''
 }
