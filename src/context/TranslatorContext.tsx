@@ -1,7 +1,8 @@
 import { FC, ReactNode, createContext, useCallback, useContext, useMemo, useState } from 'react'
 
 import { useGeminiTranslator } from '../hooks/useGeminiTranslator'
-import { AUTO_DETECT_OPTION, ENGLISH_OPTION, GEMINI_TOOL, LANGUAGES_OPTIONS } from '../utils/constants'
+import { useGptTranslator } from '../hooks/useGptTranslator'
+import { AUTO_DETECT_OPTION, ENGLISH_OPTION, GEMINI_TOOL, GPT_TOOL, LANGUAGES_OPTIONS } from '../utils/constants'
 
 export type LanguageKey = (typeof LANGUAGES_OPTIONS)[number]['key']
 
@@ -47,15 +48,26 @@ export const TranslatorProvider: FC<ITranslatorProviderProps> = ({ children }) =
   const [inputLanguage, setInputLanguage] = useState(AUTO_DETECT_OPTION.key)
   const [outputLanguage, setOutputLanguage] = useState(ENGLISH_OPTION.key)
 
-  const { translate: translateByGemini, translating } = useGeminiTranslator()
+  const { translate: translateByGemini, translating: geminiTranslating } = useGeminiTranslator()
+  const { translate: translateByGpt, translating: gbtTranslating } = useGptTranslator()
 
-  const translate = useCallback(async ({ inputLanguage, outputLanguage, content }: ITranslateArgs) => {
-    const translatedContent = await translateByGemini({ content, inputLanguage, outputLanguage })
+  const translate = useCallback(
+    async ({ inputLanguage, outputLanguage, content }: ITranslateArgs) => {
+      let translatedContent = content
+      if (translationTool === GEMINI_TOOL.key) {
+        translatedContent = (await translateByGemini({ content, inputLanguage, outputLanguage })) as string
+      }
 
-    if (typeof translatedContent === 'string') {
-      setOutputContent(translatedContent)
-    }
-  }, [])
+      if (translationTool === GPT_TOOL.key) {
+        translatedContent = (await translateByGpt({ content, inputLanguage, outputLanguage })) as string
+      }
+
+      if (typeof translatedContent === 'string') {
+        setOutputContent(translatedContent)
+      }
+    },
+    [translationTool],
+  )
 
   const value = useMemo(
     () => ({
@@ -64,7 +76,7 @@ export const TranslatorProvider: FC<ITranslatorProviderProps> = ({ children }) =
       translationTool,
       inputLanguage,
       outputLanguage,
-      translating,
+      translating: geminiTranslating || gbtTranslating,
       setInputContent,
       setOutputContent,
       setTranslationTool,
@@ -72,7 +84,16 @@ export const TranslatorProvider: FC<ITranslatorProviderProps> = ({ children }) =
       setOutputLanguage,
       translate,
     }),
-    [inputContent, outputContent, translationTool, inputLanguage, outputLanguage, translating, translate],
+    [
+      inputContent,
+      outputContent,
+      translationTool,
+      inputLanguage,
+      outputLanguage,
+      geminiTranslating,
+      gbtTranslating,
+      translate,
+    ],
   )
 
   return <TranslatorContext.Provider value={value}>{children}</TranslatorContext.Provider>

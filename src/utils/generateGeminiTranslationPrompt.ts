@@ -13,7 +13,7 @@ import { AUTO_DETECT_OPTION } from './constants'
  * @returns {string} The prompt to send to Gemini AI.
  */
 
-export const generateGeminiTranslatePrompt = (content: string, outputLanguage: string, inputLanguage: string) => {
+export const generateGeminiTranslationPrompt = (content: string, outputLanguage: string, inputLanguage: string) => {
   if (inputLanguage === AUTO_DETECT_OPTION.key) {
     return `Translate in ${outputLanguage} text in input. Use json template in output and replace
     RESULT by the translation.

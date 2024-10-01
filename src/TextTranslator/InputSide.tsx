@@ -7,9 +7,9 @@ import useDebounce from '../hooks/useDebounce'
 import { MINIMUM_INPUT_LENGTH } from '../utils/constants'
 
 const InputSide = () => {
-  const { inputContent, outputLanguage, inputLanguage, setInputContent, setOutputContent, translate } =
+  const { inputContent, outputLanguage, inputLanguage, translationTool, setInputContent, setOutputContent, translate } =
     useTranslatorContext()
-  const debouncedInputContent = useDebounce(inputContent, 600)
+  const debouncedInputContent = useDebounce(inputContent, 800)
 
   const changeInputContent = ({ target: { value } }: ChangeEvent<HTMLTextAreaElement>) => {
     setInputContent(value)
@@ -23,7 +23,7 @@ const InputSide = () => {
     if (debouncedInputContent.length >= MINIMUM_INPUT_LENGTH) {
       translate({ content: debouncedInputContent, outputLanguage, inputLanguage })
     }
-  }, [debouncedInputContent, outputLanguage, outputLanguage, inputLanguage])
+  }, [debouncedInputContent, outputLanguage, outputLanguage, inputLanguage, translationTool])
 
   return (
     <div className='flex h-full flex-1 flex-col gap-5'>
