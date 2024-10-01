@@ -43,7 +43,6 @@ export const LANGUAGES = [
   { key: 'KO', name: 'Korean' },
   { key: 'LT', name: 'Lithuanian' },
   { key: 'LV', name: 'Latvian' },
-  { key: 'NB', name: 'Norwegian Bokmål' },
   { key: 'NL', name: 'Dutch' },
   { key: 'PL', name: 'Polish' },
   { key: 'PT', name: 'Portuguese (all Portuguese variants)' },
@@ -57,3 +56,5 @@ export const LANGUAGES = [
 ]
 
 export const LANGUAGES_OPTIONS = [AUTO_DETECT_OPTION, ...LANGUAGES]
+
+export const MINIMUM_INPUT_LENGTH = 3

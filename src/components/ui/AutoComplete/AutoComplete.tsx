@@ -32,7 +32,6 @@ const AutoComplete = <T,>(props: IAutoCompleteProps<T>) => {
   } = props
 
   const [searchQuery, setSearchQuery] = useState('')
-
   const filteredOptions = useMemo(
     () =>
       !searchQuery
@@ -62,19 +61,19 @@ const AutoComplete = <T,>(props: IAutoCompleteProps<T>) => {
         <>
           <div className={cn('relative w-full', containerClassName)}>
             <ComboboxInput
-              className='flex w-full rounded-md border border-gray-300 px-4 py-2 text-gray-800 placeholder-gray-500 shadow-sm outline-none transition-all duration-300 focus:border-blue-500 focus:ring-1 dark:border-gray-700 dark:bg-slate-900 dark:focus:ring-inset'
+              className='flex w-full rounded-md border border-gray-300 px-4 py-2 text-gray-800 placeholder-gray-500 shadow-sm outline-none transition-all duration-300 focus:border-blue-500 focus:ring-1 dark:border-gray-700 dark:bg-slate-900 dark:text-slate-100 dark:focus:ring-inset'
               displayValue={displayOption}
               onChange={changeQuery}
             />
             <ComboboxButton className='absolute inset-y-0 right-0 flex cursor-pointer items-center pr-2'>
-              <ChevronDownIcon className={cn('h-4 w-4', arrowClassName)} aria-hidden='true' />
+              <ChevronDownIcon className={cn('h-4 w-4 dark:text-slate-100', arrowClassName)} aria-hidden='true' />
             </ComboboxButton>
           </div>
           {open && (
             <ComboboxOptions
-              anchor='bottom'
               static
-              className='absolute z-50 mt-1 max-h-64 w-full origin-top overflow-auto rounded-md border bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm dark:bg-slate-900'
+              anchor='bottom'
+              className='absolute z-50 mt-1 !max-h-[15.625rem] w-[var(--input-width)] origin-top overflow-auto rounded-md border bg-white py-1 text-base shadow-lg ring-1 ring-black/5 empty:invisible focus:outline-none sm:text-sm dark:bg-slate-900'
               as={motion.div}
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}

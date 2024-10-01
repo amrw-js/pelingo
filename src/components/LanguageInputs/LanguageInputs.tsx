@@ -1,7 +1,9 @@
 import { ArrowRightIcon } from '@heroicons/react/16/solid'
+import cn from 'clsx'
 
 import { useTranslatorContext } from '../../context/TranslatorContext'
-import { LANGUAGES_OPTIONS, languageOption } from '../../utils/constants'
+import { AUTO_DETECT_OPTION, LANGUAGES, LANGUAGES_OPTIONS, languageOption } from '../../utils/constants'
+import { DISABLE_CLASSNAMES } from '../../utils/presets'
 import AutoComplete from '../ui/AutoComplete/AutoComplete'
 
 const LanguageInputs = () => {
@@ -14,6 +16,11 @@ const LanguageInputs = () => {
     setOutputLanguage(language.key)
   }
 
+  const swapLanguages = () => {
+    setOutputLanguage(inputLanguage)
+    setInputLanguage(outputLanguage)
+  }
+
   return (
     <div className='flex flex-wrap items-center gap-2'>
       <AutoComplete
@@ -24,10 +31,16 @@ const LanguageInputs = () => {
         displayOption={({ name }) => name}
         displayValue={({ key }) => key}
       />
-      <ArrowRightIcon className='size-5' />
+      <ArrowRightIcon
+        onClick={swapLanguages}
+        className={cn(
+          'size-5 cursor-pointer transition-all',
+          inputLanguage === AUTO_DETECT_OPTION.key && DISABLE_CLASSNAMES,
+        )}
+      />
       <AutoComplete
         containerClassName='flex-1'
-        options={LANGUAGES_OPTIONS}
+        options={LANGUAGES}
         value={outputLanguage}
         onChange={changeOutputLanguage}
         displayOption={({ name }) => name}

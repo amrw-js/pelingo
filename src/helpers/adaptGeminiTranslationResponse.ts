@@ -7,13 +7,12 @@ interface IGeminiResponse {
   }
 }
 export const adaptGeminiTranslationResponse = (response: IGeminiResponse) => {
-  console.log(response)
   const { candidates = [] } = response.data
   const [{ content }] = candidates
   const [{ text = '' }] = content?.parts ?? []
-  const extractedText = text.replace('```json\n', '').replace('\n```', '')
-  const parsedObject = JSON.parse(extractedText)
-  const innerText = parsedObject.text
+  const jsonMatch = text.match(/"text":\s*"(.*?)"/)
 
-  return innerText
+  if (jsonMatch && jsonMatch[1]) return jsonMatch[1].replace(/\\n/g, '\n')
+
+  return ''
 }
