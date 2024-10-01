@@ -34,7 +34,7 @@ const LanguageInputs = () => {
       <ArrowsRightLeftIcon
         onClick={swapLanguages}
         className={cn(
-          'size-5 cursor-pointer transition-all',
+          'size-5 rotate-90 cursor-pointer transition-all duration-500 sm:rotate-0',
           inputLanguage === AUTO_DETECT_OPTION.key && DISABLE_CLASSNAMES,
         )}
       />

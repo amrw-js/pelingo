@@ -14,7 +14,7 @@ const TextTranslator = () => {
       </div>
       <div className='flex flex-col gap-5 rounded-lg border border-slate-200 bg-white px-6 py-6 shadow dark:border-slate-700 dark:bg-slate-800'>
         <TranslatorProvider>
-          <div className='flex h-full w-full flex-col gap-6 lg:flex-row'>
+          <div className='flex h-full w-full flex-col gap-6 lg:h-[28.5rem] lg:flex-row'>
             <InputSide />
             <OutputSide />
           </div>
