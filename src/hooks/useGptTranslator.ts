@@ -3,6 +3,7 @@ import { useMutation } from '@tanstack/react-query'
 import { ITranslateArgs } from '../context/TranslatorContext'
 import gbtService from '../services/gbt.service'
 import { generateGbtTranslationPrompt } from '../utils/generateGbtPrompt'
+import { toastError } from '../utils/toastError'
 
 interface IGbtTranslator {
   translating: boolean
@@ -13,9 +14,7 @@ export const useGptTranslator = (): IGbtTranslator => {
   const { isPending: translating, mutateAsync: generateContent } = useMutation({
     mutationFn: gbtService.generateGbtContent,
     mutationKey: ['translator/gbt'],
-    // onError: (error) => {
-    //   toastError(error)
-    // },
+    onError: toastError,
   })
 
   const translate = async ({ content, outputLanguage }: ITranslateArgs) => {
