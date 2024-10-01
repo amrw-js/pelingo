@@ -3,10 +3,10 @@ import { ChangeEvent, useEffect } from 'react'
 import LanguageInputs from '../components/LanguageInputs/LanguageInputs'
 import TextArea from '../components/ui/TextArea/TextArea'
 import { useTranslatorContext } from '../context/TranslatorContext'
-import useDebounce from '../utils/useDebounce'
+import useDebounce from '../hooks/useDebounce'
 
 const InputSide = () => {
-  const { inputContent, outputLanguage, setInputContent, translate } = useTranslatorContext()
+  const { inputContent, outputLanguage, inputLanguage, setInputContent, translate } = useTranslatorContext()
   const debouncedInputContent = useDebounce(inputContent)
 
   const changeInputContent = ({ target: { value } }: ChangeEvent<HTMLTextAreaElement>) => {
@@ -15,9 +15,9 @@ const InputSide = () => {
 
   useEffect(() => {
     if (debouncedInputContent) {
-      translate(debouncedInputContent, outputLanguage)
+      translate({ content: debouncedInputContent, outputLanguage, inputLanguage })
     }
-  }, [translate, debouncedInputContent, outputLanguage])
+  }, [debouncedInputContent, outputLanguage, outputLanguage, inputLanguage])
 
   return (
     <div className='flex flex-1 flex-col gap-3'>

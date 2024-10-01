@@ -5,7 +5,7 @@ import { queryClient } from './api/queryClient'
 
 const App = () => {
   return (
-    <main className='h-dvh bg-slate-100 py-3'>
+    <main className='h-dvh bg-slate-100 px-16 py-10'>
       <QueryClientProvider client={queryClient}>
         <TextTranslator />
       </QueryClientProvider>

@@ -1,11 +1,12 @@
 import { useMutation } from '@tanstack/react-query'
 
+import { ITranslateArgs } from '../context/TranslatorContext'
 import googleService from '../services/google.service'
 import { generateGeminiTranslatePrompt } from '../utils/generateGeminiTranslatePrompt'
 
 interface IGeminiTranslator {
   translating: boolean
-  translate: (content: string, language: string) => Promise<unknown>
+  translate: (translationsArgs: ITranslateArgs) => Promise<unknown>
 }
 export const useGeminiTranslator = (): IGeminiTranslator => {
   const { isPending: translating, mutateAsync: generateContent } = useMutation({
@@ -16,8 +17,8 @@ export const useGeminiTranslator = (): IGeminiTranslator => {
     // },
   })
 
-  const translate = async (content: string, language: string) => {
-    const prompt = generateGeminiTranslatePrompt(content, language)
+  const translate = async ({ content, outputLanguage, inputLanguage }: ITranslateArgs) => {
+    const prompt = generateGeminiTranslatePrompt(content, outputLanguage, inputLanguage)
     return await generateContent(prompt)
   }
 

@@ -1,7 +1,7 @@
 import { FC, ReactNode, createContext, useCallback, useContext, useMemo, useState } from 'react'
 
 import { useGeminiTranslator } from '../hooks/useGeminiTranslator'
-import { AUTO_DETECT_OPTION, ENGLISH_OPTION, LANGUAGES_OPTIONS } from '../utils/constants'
+import { AUTO_DETECT_OPTION, ENGLISH_OPTION, GEMINI_TOOL, LANGUAGES_OPTIONS } from '../utils/constants'
 
 export type LanguageKey = (typeof LANGUAGES_OPTIONS)[number]['key']
 
@@ -12,7 +12,7 @@ interface ITranslatorContextType {
   inputLanguage: LanguageKey
   outputLanguage: LanguageKey
   translating: boolean
-  translate: (content: string, language: string) => Promise<unknown>
+  translate: (args: ITranslateArgs) => Promise<unknown>
   setInputContent: (value: string) => void
   setOutputContent: (value: string) => void
   setInputLanguage: (value: LanguageKey) => void
@@ -22,6 +22,12 @@ interface ITranslatorContextType {
 
 interface ITranslatorProviderProps {
   children: ReactNode
+}
+
+export interface ITranslateArgs {
+  content: string
+  inputLanguage: LanguageKey
+  outputLanguage: LanguageKey
 }
 
 const TranslatorContext = createContext<ITranslatorContextType | undefined>(undefined)
@@ -37,20 +43,19 @@ export const useTranslatorContext = () => {
 export const TranslatorProvider: FC<ITranslatorProviderProps> = ({ children }) => {
   const [inputContent, setInputContent] = useState('')
   const [outputContent, setOutputContent] = useState('')
-  const [translationTool, setTranslationTool] = useState('')
+  const [translationTool, setTranslationTool] = useState(GEMINI_TOOL.key)
   const [inputLanguage, setInputLanguage] = useState(AUTO_DETECT_OPTION.key)
   const [outputLanguage, setOutputLanguage] = useState(ENGLISH_OPTION.key)
 
   const { translate: translateByGemini, translating } = useGeminiTranslator()
 
-  const translate = useCallback(async () => {
-    const translatedContent = await translateByGemini(inputContent, outputLanguage)
+  const translate = useCallback(async ({ inputLanguage, outputLanguage, content }: ITranslateArgs) => {
+    const translatedContent = await translateByGemini({ content, inputLanguage, outputLanguage })
 
     if (typeof translatedContent === 'string') {
-      console.log(translatedContent)
       setOutputContent(translatedContent)
     }
-  }, [translateByGemini, inputContent, outputLanguage])
+  }, [])
 
   const value = useMemo(
     () => ({

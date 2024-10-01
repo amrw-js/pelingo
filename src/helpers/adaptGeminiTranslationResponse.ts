@@ -7,6 +7,7 @@ interface IGeminiResponse {
   }
 }
 export const adaptGeminiTranslationResponse = (response: IGeminiResponse) => {
+  console.log(response)
   const { candidates = [] } = response.data
   const [{ content }] = candidates
   const [{ text = '' }] = content?.parts ?? []
