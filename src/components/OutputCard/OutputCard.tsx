@@ -23,7 +23,7 @@ const OutputCard: FC<IOutputCardProps> = (props) => {
   const renderContent = () => {
     if (loading)
       return (
-        <motion.div key='loading' {...ANIMATION_PROPS}>
+        <motion.div className='p-4' key='loading' {...ANIMATION_PROPS}>
           <Skeleton />
         </motion.div>
       )
@@ -36,14 +36,14 @@ const OutputCard: FC<IOutputCardProps> = (props) => {
       )
 
     return (
-      <motion.div key='output' {...ANIMATION_PROPS}>
-        <p className='whitespace-pre'>{value}</p>
+      <motion.div key='output' className='p-4' {...ANIMATION_PROPS}>
+        <p className='whitespace-pre text-slate-900 dark:text-slate-100'>{value}</p>
       </motion.div>
     )
   }
 
   return (
-    <div className='h-full w-full overflow-hidden rounded-md bg-slate-100 p-4 shadow-md'>
+    <div className='h-full w-full overflow-hidden rounded-md bg-slate-100 shadow-md dark:bg-slate-800'>
       <AnimatePresence>{renderContent()}</AnimatePresence>
     </div>
   )

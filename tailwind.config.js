@@ -7,6 +7,8 @@ export default {
       backgroundImage: {
         'custom-gradient':
           'linear-gradient(180deg, transparent -50%, #fbfbfb), linear-gradient(90deg, #d3d0fb, #d0f0fd)',
+        'custom-gradient-dark':
+          'linear-gradient(180deg, transparent -50%, #1a1a2e), linear-gradient(90deg, #3a3a6b, #334455)',
       },
     },
   },

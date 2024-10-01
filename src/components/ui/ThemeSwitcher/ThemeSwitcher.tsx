@@ -22,10 +22,10 @@ const ThemeSwitcher = () => {
   return (
     <button
       onClick={toggleTheme}
-      className='text-navy-800 absolute bottom-6 right-6 mt-auto flex items-center gap-2 rounded-xl border-2 border-dashed border-slate-500 bg-white px-4 py-2 text-sm font-semibold uppercase transition-all duration-300 hover:translate-x-[-4px] hover:translate-y-[-4px] hover:rounded-md hover:shadow-[4px_4px_0px_black] active:translate-x-[0px] active:translate-y-[0px] active:rounded-2xl active:shadow-none dark:border-indigo-200 dark:bg-slate-950 dark:text-white dark:shadow-indigo-200'
+      className='fixed bottom-6 right-6 flex items-center gap-2 rounded-full border-2 border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-lg transition-all duration-300 hover:border-indigo-400 hover:bg-indigo-100 hover:shadow-xl dark:border-slate-600 dark:bg-slate-800 dark:text-white dark:hover:border-indigo-300 dark:hover:bg-slate-700'
     >
-      {!darkMode ? <MoonIcon className='h-5 w-5' /> : <SunIcon className='h-5 w-5' />}
-      {!darkMode ? 'Dark mode' : 'Light mode'}
+      {!darkMode ? <MoonIcon className='h-5 w-5 text-indigo-500' /> : <SunIcon className='h-5 w-5 text-yellow-400' />}
+      <span className='ml-2'>{!darkMode ? 'Dark mode' : 'Light mode'}</span>
     </button>
   )
 }

@@ -5,9 +5,14 @@ import OutputSide from './OutputSide'
 
 const TextTranslator = () => {
   return (
-    <div className='h-full'>
-      <h2 className='mb-9 text-4xl font-semibold'>Text Translator</h2>
-      <div className='flex h-3/4 flex-col gap-5 rounded-lg border bg-white px-6 py-6 shadow'>
+    <div className='flex h-full flex-col gap-6'>
+      <div>
+        <h2 className='mb-2 text-4xl font-bold text-slate-900 dark:text-slate-100'>Text Translator</h2>
+        <p className='text-sm text-slate-800 dark:text-slate-300'>
+          Leverage AI technology to instantly translate your text.
+        </p>
+      </div>
+      <div className='flex h-3/4 flex-col gap-5 rounded-lg border border-slate-200 bg-white px-6 py-6 shadow dark:border-slate-700 dark:bg-slate-800'>
         <TranslatorProvider>
           <div className='flex h-full w-full gap-6'>
             <InputSide />

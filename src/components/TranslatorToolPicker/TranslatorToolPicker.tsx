@@ -11,12 +11,14 @@ const TranslatorToolPicker = () => {
   }
 
   return (
-    <div className='flex w-full gap-4 border-b'>
+    <div className='flex w-full gap-4 border-b border-slate-200 dark:border-slate-700'>
       {AI_TOOLS.map(({ key, name, Icon }) => (
         <div
           key={key}
+          role='button'
+          tabIndex={0}
           className={cn(
-            'group flex h-[2.625rem] cursor-pointer items-center justify-start gap-1 px-4 transition-all',
+            'group flex h-[2.625rem] cursor-pointer items-center justify-start gap-1 px-4 text-slate-900 transition-all dark:text-slate-100',
             translationTool === key && 'border-b-2 border-violet-400',
           )}
           onClick={() => changeTool(key)}
