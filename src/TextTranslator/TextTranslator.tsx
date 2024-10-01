@@ -12,9 +12,9 @@ const TextTranslator = () => {
           Leverage AI technology to instantly translate your text.
         </p>
       </div>
-      <div className='flex h-3/4 flex-col gap-5 rounded-lg border border-slate-200 bg-white px-6 py-6 shadow dark:border-slate-700 dark:bg-slate-800'>
+      <div className='flex flex-col gap-5 rounded-lg border border-slate-200 bg-white px-6 py-6 shadow dark:border-slate-700 dark:bg-slate-800'>
         <TranslatorProvider>
-          <div className='flex h-full w-full gap-6'>
+          <div className='flex h-full w-full flex-col gap-6 lg:flex-row'>
             <InputSide />
             <OutputSide />
           </div>

@@ -43,7 +43,7 @@ const OutputCard: FC<IOutputCardProps> = (props) => {
   }
 
   return (
-    <div className='h-full w-full overflow-hidden rounded-md bg-slate-100 shadow-md dark:bg-slate-800'>
+    <div className='h-full min-h-64 w-full overflow-hidden rounded-md bg-slate-100 shadow-md dark:bg-slate-800'>
       <AnimatePresence>{renderContent()}</AnimatePresence>
     </div>
   )

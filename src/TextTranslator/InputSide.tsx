@@ -29,7 +29,7 @@ const InputSide = () => {
     <div className='flex h-full flex-1 flex-col gap-5'>
       <LanguageInputs />
       <TextArea
-        className='min-h-[calc(100%-42px-1.25rem)] shadow-md'
+        className='min-h-48 shadow-md lg:min-h-96'
         placeholder='Enter text to be translated'
         value={inputContent}
         onChange={changeInputContent}

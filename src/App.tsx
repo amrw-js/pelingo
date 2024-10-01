@@ -6,7 +6,7 @@ import ThemeSwitcher from './components/ui/ThemeSwitcher/ThemeSwitcher'
 
 const App = () => {
   return (
-    <main className='h-dvh bg-slate-100 px-16 py-10 transition-colors duration-300 dark:bg-slate-900 dark:text-slate-100'>
+    <main className='min-h-screen bg-slate-100 px-8 py-5 transition-colors duration-300 md:px-16 md:py-10 dark:bg-slate-900 dark:text-slate-100'>
       <QueryClientProvider client={queryClient}>
         <TextTranslator />
       </QueryClientProvider>

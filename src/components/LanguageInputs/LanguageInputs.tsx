@@ -22,7 +22,7 @@ const LanguageInputs = () => {
   }
 
   return (
-    <div className='flex flex-wrap items-center gap-2'>
+    <div className='flex flex-col items-center gap-2 sm:flex-row'>
       <AutoComplete
         options={LANGUAGES_OPTIONS}
         value={inputLanguage}
