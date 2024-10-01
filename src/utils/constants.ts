@@ -1,3 +1,6 @@
+import GeminiIcon from '../components/ui/Icons/Gemini'
+import GptIcon from '../components/ui/Icons/Gpt'
+
 export type languageOption = { key: string; name: string }
 
 export const ENGLISH_OPTION = { key: 'EN', name: 'English' }
@@ -6,6 +9,20 @@ export const AUTO_DETECT_OPTION = {
   key: 'auto',
   name: 'Auto Detect',
 }
+
+export const GEMINI_TOOL = {
+  key: 'gemini',
+  name: 'Gemini',
+  Icon: GeminiIcon,
+}
+
+export const GPT_TOOL = {
+  key: 'gpt',
+  name: 'GPT',
+  Icon: GptIcon,
+}
+
+export const AI_TOOLS = [GEMINI_TOOL, GPT_TOOL]
 
 export const LANGUAGES = [
   ENGLISH_OPTION,

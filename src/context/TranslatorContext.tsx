@@ -1,5 +1,6 @@
-import { FC, ReactNode, createContext, useContext, useMemo, useState } from 'react'
+import { FC, ReactNode, createContext, useCallback, useContext, useMemo, useState } from 'react'
 
+import { useGeminiTranslator } from '../hooks/useGeminiTranslator'
 import { AUTO_DETECT_OPTION, ENGLISH_OPTION, LANGUAGES_OPTIONS } from '../utils/constants'
 
 export type LanguageKey = (typeof LANGUAGES_OPTIONS)[number]['key']
@@ -10,6 +11,8 @@ interface ITranslatorContextType {
   translationTool: string
   inputLanguage: LanguageKey
   outputLanguage: LanguageKey
+  translating: boolean
+  translate: (content: string, language: string) => Promise<unknown>
   setInputContent: (value: string) => void
   setOutputContent: (value: string) => void
   setInputLanguage: (value: LanguageKey) => void
@@ -38,6 +41,17 @@ export const TranslatorProvider: FC<ITranslatorProviderProps> = ({ children }) =
   const [inputLanguage, setInputLanguage] = useState(AUTO_DETECT_OPTION.key)
   const [outputLanguage, setOutputLanguage] = useState(ENGLISH_OPTION.key)
 
+  const { translate: translateByGemini, translating } = useGeminiTranslator()
+
+  const translate = useCallback(async () => {
+    const translatedContent = await translateByGemini(inputContent, outputLanguage)
+
+    if (typeof translatedContent === 'string') {
+      console.log(translatedContent)
+      setOutputContent(translatedContent)
+    }
+  }, [translateByGemini, inputContent, outputLanguage])
+
   const value = useMemo(
     () => ({
       inputContent,
@@ -45,13 +59,15 @@ export const TranslatorProvider: FC<ITranslatorProviderProps> = ({ children }) =
       translationTool,
       inputLanguage,
       outputLanguage,
+      translating,
       setInputContent,
       setOutputContent,
       setTranslationTool,
       setInputLanguage,
       setOutputLanguage,
+      translate,
     }),
-    [inputContent, outputContent, translationTool, inputLanguage, outputLanguage],
+    [inputContent, outputContent, translationTool, inputLanguage, outputLanguage, translating, translate],
   )
 
   return <TranslatorContext.Provider value={value}>{children}</TranslatorContext.Provider>
