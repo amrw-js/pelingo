@@ -27,7 +27,7 @@ const CopyToClipboardButton: FC<ICopyToClipboardButton> = (props) => {
       tabIndex={0}
       onClick={copyToClipboard}
       className={cn(
-        'absolute bottom-2 right-0 -translate-x-1/2 -translate-y-1/2 rounded-md bg-blue-600 px-2 py-1 text-white transition-all hover:bg-blue-700 dark:bg-blue-500 dark:text-white dark:hover:bg-blue-400',
+        'absolute bottom-2 right-4 rounded-md bg-blue-600 px-2 py-1 text-white transition-all hover:bg-blue-700 dark:bg-blue-500 dark:text-white dark:hover:bg-blue-400',
         hidden && 'opacity-0',
         className,
       )}

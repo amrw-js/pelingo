@@ -4,7 +4,7 @@ import LanguageInputs from '../components/LanguageInputs/LanguageInputs'
 import TextArea from '../components/ui/TextArea/TextArea'
 import { useTranslatorContext } from '../context/TranslatorContext'
 import useDebounce from '../hooks/useDebounce'
-import { MINIMUM_INPUT_LENGTH } from '../utils/constants'
+import { INPUTS_MAX_LENGTH, MINIMUM_INPUT_LENGTH } from '../utils/constants'
 
 const InputSide = () => {
   const { inputContent, outputLanguage, inputLanguage, translationTool, setInputContent, setOutputContent, translate } =
@@ -31,6 +31,7 @@ const InputSide = () => {
       <TextArea
         className='h-full min-h-48 shadow-md'
         placeholder='Enter text to be translated'
+        maxLength={INPUTS_MAX_LENGTH}
         value={inputContent}
         onChange={changeInputContent}
       />

@@ -2,6 +2,7 @@ import cn from 'clsx'
 import { ChangeEvent, FC } from 'react'
 
 import CopyToClipboardButton from '../CopyToClipboardButton/CopyToClipboardButton'
+import InputMaxLength from '../InputMaxLength/InputMaxLength'
 
 interface ITextAreaProps {
   label?: string
@@ -10,11 +11,12 @@ interface ITextAreaProps {
   value: string
   className?: string
   hideCopyButton?: boolean
+  maxLength?: number
   onChange?: (event: ChangeEvent<HTMLTextAreaElement>) => void
 }
 
 const TextArea: FC<ITextAreaProps> = (props) => {
-  const { label, id, placeholder, value, className, hideCopyButton, onChange } = props
+  const { label, id, placeholder, value, className, hideCopyButton, maxLength, onChange } = props
 
   return (
     <>
@@ -24,10 +26,11 @@ const TextArea: FC<ITextAreaProps> = (props) => {
         </label>
       )}
 
-      <div className='relative h-full'>
+      <div className='relative flex h-full'>
         <textarea
           id={id}
           placeholder={placeholder}
+          maxLength={maxLength}
           value={value}
           onChange={onChange}
           className={cn(
@@ -36,6 +39,7 @@ const TextArea: FC<ITextAreaProps> = (props) => {
           )}
         />
         <CopyToClipboardButton text={value} hidden={!value || hideCopyButton} />
+        {maxLength && value && <InputMaxLength maxLength={maxLength} charCount={value.length} />}
       </div>
     </>
   )

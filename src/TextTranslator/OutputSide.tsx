@@ -3,12 +3,17 @@ import TranslatorToolPicker from '../components/TranslatorToolPicker/TranslatorT
 import { useTranslatorContext } from '../context/TranslatorContext'
 
 const OutputSide = () => {
-  const { translating, outputContent, translationTool } = useTranslatorContext()
+  const { translating, outputContent, translationTool, outputLanguage } = useTranslatorContext()
 
   return (
     <div className='flex flex-1 flex-col gap-5'>
       <TranslatorToolPicker />
-      <OutputCard value={outputContent} loading={translating} translationTool={translationTool} />
+      <OutputCard
+        value={outputContent}
+        loading={translating}
+        translationTool={translationTool}
+        language={outputLanguage}
+      />
     </div>
   )
 }

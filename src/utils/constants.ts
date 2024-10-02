@@ -55,6 +55,23 @@ export const LANGUAGES = [
   { key: 'UK', name: 'Ukrainian' },
 ]
 
+export const RTL_LANGUAGES = [
+  'ar', // Arabic
+  'fa', // Persian (Farsi)
+  'he', // Hebrew
+  'ur', // Urdu
+  'yi', // Yiddish
+  'dv', // Divehi (Maldivian)
+  'ps', // Pashto
+  'sd', // Sindhi
+  'ckb', // Central Kurdish (Sorani)
+  'jrb', // Judeo-Arabic
+  'azb', // South Azerbaijani
+  'ku', // Kurdish (Arabic script)
+]
+
 export const LANGUAGES_OPTIONS = [AUTO_DETECT_OPTION, ...LANGUAGES]
 
 export const MINIMUM_INPUT_LENGTH = 3
+
+export const INPUTS_MAX_LENGTH = 128
