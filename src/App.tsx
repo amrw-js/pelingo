@@ -11,7 +11,7 @@ import { IApiKeys } from './global.interface'
 
 const App = () => {
   const { setApiKeys } = useApiKeys()
-  const [apiKeysModalOpen, setApiKeysModalOpen] = useState(!import.meta.env.DEVrue)
+  const [apiKeysModalOpen, setApiKeysModalOpen] = useState(!import.meta.env.DEV)
 
   const closeApiKeysModal = () => {
     setApiKeysModalOpen(false)
