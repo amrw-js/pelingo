@@ -1,15 +1,9 @@
 import toast from 'react-hot-toast'
 
+import { IApiError } from '../global.interface'
+
 import { generateSlug } from './generateSlug'
 
-interface IApiError {
-  response?: {
-    data: {
-      [key: string]: unknown
-    }
-  }
-  message?: string
-}
 export const errorCatchMessage = (error: IApiError, messagePropName = 'message'): string => {
   if (error?.response?.data) {
     const errorMsg = error.response.data[messagePropName]

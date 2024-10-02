@@ -1,5 +1,6 @@
 import { useMutation } from '@tanstack/react-query'
 
+import { useApiKeys } from '../context/ApiKeysContext'
 import { ITranslateArgs } from '../context/TranslatorContext'
 import gbtService from '../services/gbt.service'
 import { generateGbtTranslationPrompt } from '../utils/generateGbtPrompt'
@@ -11,8 +12,10 @@ interface IGbtTranslator {
 }
 
 export const useGptTranslator = (): IGbtTranslator => {
+  const { gbtApiKey } = useApiKeys()
+
   const { isPending: translating, mutateAsync: generateContent } = useMutation({
-    mutationFn: gbtService.generateGbtContent,
+    mutationFn: (content: string) => gbtService.generateGbtContent(content, gbtApiKey),
     mutationKey: ['translator/gbt'],
     onError: toastError,
   })

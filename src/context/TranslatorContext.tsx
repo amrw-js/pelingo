@@ -41,7 +41,9 @@ export const useTranslatorContext = () => {
   return context
 }
 
-export const TranslatorProvider: FC<ITranslatorProviderProps> = ({ children }) => {
+export const TranslatorProvider: FC<ITranslatorProviderProps> = (props) => {
+  const { children } = props
+
   const [inputContent, setInputContent] = useState('')
   const [outputContent, setOutputContent] = useState('')
   const [translationTool, setTranslationTool] = useState(GEMINI_TOOL.key)

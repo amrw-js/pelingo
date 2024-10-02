@@ -1,5 +1,6 @@
 import { useMutation } from '@tanstack/react-query'
 
+import { useApiKeys } from '../context/ApiKeysContext'
 import { ITranslateArgs } from '../context/TranslatorContext'
 import googleService from '../services/google.service'
 import { generateGeminiTranslationPrompt } from '../utils/generateGeminiTranslationPrompt'
@@ -10,8 +11,10 @@ interface IGeminiTranslator {
   translate: (translationsArgs: ITranslateArgs) => Promise<unknown>
 }
 export const useGeminiTranslator = (): IGeminiTranslator => {
+  const { geminiApiKey } = useApiKeys()
+
   const { isPending: translating, mutateAsync: generateContent } = useMutation({
-    mutationFn: googleService.generateGeminiContent,
+    mutationFn: (content: string) => googleService.generateGeminiContent(content, geminiApiKey),
     mutationKey: ['translator/gemini'],
     onError: toastError,
   })

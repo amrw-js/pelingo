@@ -2,17 +2,13 @@ import { Button } from '@headlessui/react'
 import { ExclamationTriangleIcon } from '@heroicons/react/16/solid'
 import { ChangeEvent, type FC, FormEvent, useState } from 'react'
 
+import { IApiKeys } from '../../global.interface'
 import Input from '../ui/Input/Input'
 import Modal from '../ui/Modal/Modal'
 
-export interface ISubmitData {
-  geminiApiKey: string
-  gbtApiKey: string
-}
-
 interface IApiKeysModalProps {
   open: boolean
-  onSubmit: (data: ISubmitData) => void
+  onSubmit: (data: IApiKeys) => void
   onClose: () => void
 }
 
@@ -83,7 +79,7 @@ const ApiKeysModal: FC<IApiKeysModalProps> = (props) => {
             <Button
               tabIndex={1}
               onClick={onClose}
-              className='w-1/2 rounded-lg border-0 bg-transparent px-4 py-2 text-xs text-gray-700 transition duration-200 ease-in-out hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 dark:text-gray-300'
+              className='w-1/2 rounded-lg border-0 bg-transparent px-4 py-2 text-xs text-gray-700 transition duration-200 ease-in-out focus:outline-none dark:text-gray-300'
             >
               Continue without API Keys
             </Button>
