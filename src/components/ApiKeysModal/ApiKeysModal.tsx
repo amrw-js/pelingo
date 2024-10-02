@@ -83,7 +83,7 @@ const ApiKeysModal: FC<IApiKeysModalProps> = (props) => {
             <Button
               tabIndex={1}
               onClick={onClose}
-              className='w-1/2 rounded-lg border-0 bg-transparent px-4 py-2 text-xs text-gray-700 transition duration-200 ease-in-out hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50'
+              className='w-1/2 rounded-lg border-0 bg-transparent px-4 py-2 text-xs text-gray-700 transition duration-200 ease-in-out hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 dark:text-gray-300'
             >
               Continue without API Keys
             </Button>
