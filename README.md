@@ -19,6 +19,12 @@
 - **Swap Between Languages:** Seamlessly switch between the detected language and the target language, offering a smooth and intuitive user experience.
 - **Copy to Clipboard:** Quickly copy the translated text to your clipboard with a single click, making it easy to paste the results into any application.
 
+## Demo
+
+Check out the live demo of **Pelingo** [here](https://pelingo-nitc.vercel.app).
+
+Alternatively, you can run the project locally to see it in action.
+
 
 ## Requirements
 
