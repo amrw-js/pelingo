@@ -32,7 +32,7 @@ const ApiKeysModal: FC<IApiKeysModalProps> = (props) => {
   }
 
   return (
-    <Modal open={open} onClose={onClose} verticallyCentered wrapperClassNames='w-1/4 w-[28.125rem]'>
+    <Modal open={open} onClose={onClose} verticallyCentered wrapperClassNames='max-w-1/4 w-[28.125rem]'>
       <div className='flex flex-col items-center p-8 text-center'>
         <div className='flex h-[3.75rem] w-[3.75rem] items-center justify-center rounded-full bg-orange-100 dark:bg-orange-600'>
           <ExclamationTriangleIcon className='h-9 w-9 text-orange-600 dark:text-orange-200' />
@@ -68,18 +68,18 @@ const ApiKeysModal: FC<IApiKeysModalProps> = (props) => {
             <strong>Important:</strong> All API keys are secured and are end-to-end encrypted. They are not saved
             anywhere.
           </p>
-          <div className='flex w-full items-center justify-end gap-2 pt-5'>
+          <div className='xs:flex-row flex w-full flex-col items-center justify-end gap-2 pt-5'>
             <Button
               type='submit'
               tabIndex={0}
-              className='w-1/2 rounded-lg bg-blue-600 px-4 py-2 text-xs font-semibold text-white shadow-md transition duration-200 ease-in-out hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-opacity-50'
+              className='flex-shrink-0 rounded-lg bg-blue-600 px-4 py-2 text-xs font-semibold text-white shadow-md transition duration-200 ease-in-out hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-opacity-50'
             >
               Save Keys
             </Button>
             <Button
               tabIndex={1}
               onClick={onClose}
-              className='w-1/2 rounded-lg border-0 bg-transparent px-4 py-2 text-xs text-gray-700 transition duration-200 ease-in-out focus:outline-none dark:text-gray-300'
+              className='flex-shrink-0 rounded-lg border-0 bg-transparent px-4 py-2 text-xs text-gray-700 transition duration-200 ease-in-out focus:outline-none dark:text-gray-300'
             >
               Continue without API Keys
             </Button>

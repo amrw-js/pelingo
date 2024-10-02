@@ -32,7 +32,7 @@ const Input: FC<IInputProps> = (props) => {
   } = props
 
   return (
-    <div className='flex w-full items-center gap-2'>
+    <div className='xs:flex-row flex w-full flex-col flex-wrap items-center gap-2'>
       {label && (
         <label tabIndex={-1} htmlFor={id} className='text-xs font-medium leading-5 text-slate-700 dark:text-slate-300'>
           {label}

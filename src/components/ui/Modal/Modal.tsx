@@ -17,7 +17,7 @@ const Modal: FC<IModalProps> = (props) => {
   return (
     <Dialog open={open} as='div' className={cn('relative z-10', dialogClassName)} onClose={onClose}>
       <DialogBackdrop className='fixed inset-0 bg-black/30' />
-      <div className={cn('fixed inset-0 z-10 w-screen overflow-y-auto p-4 sm:p-6 md:p-[15vh]')}>
+      <div className='fixed inset-0 z-10 w-screen overflow-y-auto p-4 sm:p-6 md:p-[15vh]'>
         <TransitionChild
           enter='ease-out duration-300'
           enterFrom='opacity-0 scale-95'
@@ -28,7 +28,7 @@ const Modal: FC<IModalProps> = (props) => {
         >
           <DialogPanel
             className={cn(
-              'mx-auto transform rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 transition-all dark:bg-gray-800',
+              'xs:!max-w-[28.125rem] mx-auto !w-auto transform rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 transition-all dark:bg-gray-800',
               verticallyCentered && 'flex items-center justify-center',
               wrapperClassNames,
             )}
