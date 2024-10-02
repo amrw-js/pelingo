@@ -48,7 +48,7 @@ async function main() {
 
   await writeFile('.env', updatedEnv)
 
-  console.log('.env file has been updated!')
+  console.log('API keys have been updated!')
   rl.close()
 }
 
