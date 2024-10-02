@@ -1,10 +1,10 @@
-import { openai } from '../api/gptClient'
+import { openaiClient } from '../api/gptClient'
 import { adaptGbtTranslationResponse } from '../helpers/adaptGbtTranslationResponse'
 
 class GbtService {
   async generateGbtContent(content: string): Promise<unknown> {
     try {
-      return await openai.chat.completions
+      return await openaiClient.chat.completions
         .create({
           model: 'gpt-3.5-turbo',
           messages: [
