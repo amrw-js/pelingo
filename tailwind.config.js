@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 /** @type {import('tailwindcss').Config} */
 export default {
   darkMode: 'class',
@@ -6,6 +8,9 @@ export default {
     extend: {
       screens: {
         xs: '360px',
+      },
+      fontFamily: {
+        sans: ['"Roboto"', ...defaultTheme.fontFamily.sans],
       },
       backgroundImage: {
         'custom-gradient':

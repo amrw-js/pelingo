@@ -74,4 +74,4 @@ export const LANGUAGES_OPTIONS = [AUTO_DETECT_OPTION, ...LANGUAGES]
 
 export const MINIMUM_INPUT_LENGTH = 3
 
-export const INPUTS_MAX_LENGTH = 128
+export const INPUTS_MAX_LENGTH = 256
